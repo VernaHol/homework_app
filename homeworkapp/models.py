@@ -11,6 +11,7 @@ class Course(models.Model):
         return self.course_name
 
 class Homework(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     assignment = models.CharField(max_length=200, default='0')
     deadline = models.DateTimeField()
     materials = models.TextField()
