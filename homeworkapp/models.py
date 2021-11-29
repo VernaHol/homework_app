@@ -17,6 +17,7 @@ class Homework(models.Model):
     materials = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
     completed = models.BooleanField()
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.assignment
