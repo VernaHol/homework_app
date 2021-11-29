@@ -10,4 +10,4 @@ def course(request):
     """show all homeworks."""
     courses = Course.objects.order_by('date_added')
     context = {'courses': courses}
-    return render(requested, 'homeworkapp/courses.html', context)
+    return render(request, 'homeworkapp/courses.html', context)
