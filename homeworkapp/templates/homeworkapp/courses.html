@@ -5,4 +5,13 @@
 <p>Courses</p>
 <p>Allows user to add their courses to the app</p>
 
+<p>Course</p>
+<ul>
+    {% for course in courses %}
+    <li>{{ course }}</li>
+    {% empty %}
+    <li>No courses have been added yet.</li>
+    {% endfor %}
+</ul>
+
 {% endblock content %}
