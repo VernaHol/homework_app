@@ -9,4 +9,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     #Page that shows course information
     path('courses/', views.courses, name='courses'),
+    #Page that shows a certain courses homework
+    path('course/<int:course_id>', views.course, name='course'),
 ]
