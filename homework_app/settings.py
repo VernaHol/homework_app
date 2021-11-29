@@ -33,8 +33,14 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #My apps
     'homeworkapp',
+<<<<<<< HEAD
 
     #Default django apps.
+=======
+    'users',
+
+    #Default django apps
+>>>>>>> e3ce07533d617145fd6cb7327793fc0be286b778
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
