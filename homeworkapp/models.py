@@ -15,6 +15,7 @@ class Homework(models.Model):
     deadline = models.DateTimeField()
     materials = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
+    completed = models.BooleanField()
 
     def __str__(self):
         return self.assignment
