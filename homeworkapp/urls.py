@@ -8,5 +8,5 @@ urlpatterns = [
     #Home page
     path('', views.index, name='index'),
     #Page that shows course information
-    path('courses/', views.topics, name='courses'),
+    path('courses/', views.courses, name='courses'),
 ]
