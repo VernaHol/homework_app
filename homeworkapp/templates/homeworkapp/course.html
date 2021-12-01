@@ -5,4 +5,20 @@
 <p>homework</p>
 <p>Allows user to write the various homeworks they have and mark them as completed</p>
 
+# page 405
+<p>Course: {{ course }}</p>
+
+<p>homeworks:</p>
+<ul>
+    {% for homework in homeworks %}
+    <li>
+        <p>{{ homework.date_added|date:'M d, Y H:i' }}</p>
+        <p>{{ homework.assignment|linebreaks }}</p>
+        
+    </li>
+{% empty %}
+<li>There are no homeworks due for this course yet.</li>
+{% endfor %}
+</ul>
+
 {% endblock content %}

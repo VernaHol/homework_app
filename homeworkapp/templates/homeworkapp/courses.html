@@ -8,7 +8,9 @@
 <p>Course</p>
 <ul>
     {% for course in courses %}
-    <li>{{ course }}</li>
+    <li>
+        <a href="{% url 'homeworkapp:course' course.id %}">{{ course }}</a>
+    </li>
     {% empty %}
     <li>No courses have been added yet.</li>
     {% endfor %}
