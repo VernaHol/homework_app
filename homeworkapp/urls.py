@@ -11,4 +11,5 @@ urlpatterns = [
     path('courses/', views.courses, name='courses'),
     #Page that shows a certain courses homework
     path('course/<int:course_id>', views.course, name='course'),
+    #Page that shows the homework added
 ]
