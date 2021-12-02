@@ -13,10 +13,9 @@
     {% for homework in homeworks %}
     <li>
         <p>{{ homework.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ homework.assignment|linebreaks }}</p>
-        
+        <p>{{ homework.assignment|linebreaks }}</p>  
     </li>
-{% empty %}
+    {% empty %}
 <li>There are no homeworks due for this course yet.</li>
 {% endfor %}
 </ul>
