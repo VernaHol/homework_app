@@ -1,0 +1,12 @@
+{% extends "homeworkapp/base.html" %}
+
+{% block content %}
+  <p>Add a new course:</p>
+
+  <form action="{% url 'homeworkapp:new_course' %}" method='post'></form>
+     {% csrf_token %}
+     {{ form.as_p }}
+     <button name="submit">Add course</button>
+  </form> 
+
+  {% endblock content %}
