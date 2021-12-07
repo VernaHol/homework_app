@@ -9,6 +9,11 @@
 <p>Course: {{ course }}</p>
 
 <p>homeworks:</p>
+
+<p>
+    <a href="{% url 'homeworkapp:new_homework' course.id %}">Add new homework</a> 
+</p>
+
 <ul>
     {% for homework in homeworks %}
     <li>
