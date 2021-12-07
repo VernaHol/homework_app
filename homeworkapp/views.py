@@ -23,6 +23,7 @@ def course(request, course_id):
     context = {'course': course, 'homeoworks': homeoworks}
     return render(request, 'homeworkapp/course.html', context)
 
+#page411
 def new_course(request):
     """Add a new course"""
     if request.method != 'POST':
