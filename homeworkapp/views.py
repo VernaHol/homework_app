@@ -40,6 +40,24 @@ def new_course(request):
     context = {'form': form}
     return render(request, 'homeworkapp/new_course.html', context)
 
+#page415
+def new_homework(request, course_id):
+    """Adds a new homework to a particuar course"""
+    course = course.object.get(id=course_id)
 
+    if request.method != 'POST':
+        #No data submitted; create a blank form.
+        form = HomeworkForm()
+    else:
+        # POST data submitted; process data.
+        form = HomeworkForm(data=request.POST)
+        if form.is_valid():
+            new_homework = form.save(commit=False)
+            new_homework.course = course
+            new_homework.save()
+            return redirect('homeworkapp/new_homeworkapp.html', context)
 
-            
+    #Display a blank or invalid form.
+    context = {'course': course, 'form': form}
+    return render(request, 'homeworkapp/new_homework.html', context)
+      
