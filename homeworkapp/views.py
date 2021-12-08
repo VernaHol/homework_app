@@ -62,7 +62,7 @@ def new_homework(request, course_id):
     return render(request, 'homeworkapp/new_homework.html', context)
 
 #page418
-def edit_homework(request, homework_id)
+def edit_homework(request, homework_id):
     """Edit an existing homework"""
     homework = Homework.objects.get(id=homework_id)
     course = homework.course
@@ -77,7 +77,7 @@ def edit_homework(request, homework_id)
             form.save()
             return redirect('homeworkapp:course', course_id=course.id)
 
-context = {'homework': homework, 'course': course, 'form': form}
-return render(request, 'homeworkapp/edit_homework.html', context)
+    context = {'homework': homework, 'course': course, 'form': form}
+    return render(request, 'homeworkapp/edit_homework.html', context)
 
       
