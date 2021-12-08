@@ -19,8 +19,8 @@ def courses(request):
 def course(request, course_id):
     """Shows the individual course and all its homeworks."""
     course = Course.objects.get(id=course_id)
-    homeoworks = course.homework_set.order_by('-date_added')
-    context = {'course': course, 'homeoworks': homeoworks}
+    homeworks = course.homework_set.order_by('-date_added')
+    context = {'course': course, 'homeworks': homeworks}
     return render(request, 'homeworkapp/course.html', context)
 
 #page411
