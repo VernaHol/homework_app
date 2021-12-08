@@ -6,15 +6,15 @@ from .models import Course, Homework
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['text']
-        labels = {'text': ''}
+        fields = ['course_name', 'teacher', 'semester']
+        labels = {'course_name':'', 'teacher':'', 'semester': ''}
 
 #page 414
 class HomeworkForm(forms.ModelForm):
     class Meta:
         model = Homework
-        fields = ['text']
-        labels = {'text': ''}
-        widgets = {'text': forms.Textarea(attrs={'cols':100})}
+        fields = ['assignment', 'materials']
+        labels = {'assignment': '', 'materials':''}
+        widgets = {'assignment': forms.Textarea(attrs={'cols':100}), 'materials': forms.Textarea(attrs={'cols':80}) }
 
  
