@@ -60,4 +60,24 @@ def new_homework(request, course_id):
     #Display a blank or invalid form.
     context = {'course': course, 'form': form}
     return render(request, 'homeworkapp/new_homework.html', context)
+
+#page418
+def edit_homework(request, homework_id)
+    """Edit an existing homework"""
+    homework = Homework.objects.get(id=homework_id)
+    course = homework.course
+
+    if request.method != 'POST':
+        #Initial request; pre-fill form with the current homework
+        form = HomeworkForm(instance=homework)
+    else:
+        #POST data submitted; process data
+        form = HomeworkForm(instance=homework, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('homeworkapp:course', course_id=course.id)
+
+context = {'homework': homework, 'course': course, 'form': form}
+return render(request, 'homeworkapp/edit_homework.html', context)
+
       
