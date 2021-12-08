@@ -18,7 +18,10 @@
     {% for homework in homeworks %}
     <li>
         <p>{{ homework.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ homework.assignment|linebreaks }}</p>  
+        <p>{{ homework.assignment|linebreaks }}</p>
+        <p>
+            <a href="{% url 'homeworkapp:edit_homework' homework.id %}">Edit homework</a>
+        </p> 
     </li>
     {% empty %}
 <li>There are no homeworks due for this course yet.</li>
