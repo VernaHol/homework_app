@@ -15,4 +15,6 @@ urlpatterns = [
     path('new_course/', views.new_course, name='new_course'),
     #Path for adding a new homework
     path('new_homework/<int:course_id>/', views.new_homework, name='new_homework'),
+    #Path for editing a homework page418
+    path('edit_homework/<int:homework_id>/', views.edit_homework, name='edit_homework'),
 ]
