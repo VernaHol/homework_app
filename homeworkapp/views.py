@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 from .models import Course, Homework
 from .forms import CourseForm, HomeworkForm
@@ -24,6 +25,7 @@ def course(request, course_id):
     return render(request, 'homeworkapp/course.html', context)
 
 #page411
+@login_required
 def new_course(request):
     """Add a new course"""
     if request.method != 'POST':
@@ -41,6 +43,7 @@ def new_course(request):
     return render(request, 'homeworkapp/new_course.html', context)
 
 #page415
+@login_required
 def new_homework(request, course_id):
     """Adds a new homework to a particuar course"""
     course = course.object.get(id=course_id)
@@ -62,6 +65,7 @@ def new_homework(request, course_id):
     return render(request, 'homeworkapp/new_homework.html', context)
 
 #page418
+@login_required
 def edit_homework(request, homework_id):
     """Edit an existing homework"""
     homework = Homework.objects.get(id=homework_id)
