@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 from .models import Course, Homework
 from .forms import CourseForm, HomeworkForm
@@ -14,6 +15,9 @@ def index(request):
 def courses(request):
     """show all homeworks."""
     courses = Course.objects.order_by('date_added')
+    #Make sure that the homework belongs to the current user
+    if courses.owner != request.user:
+        raise Http404
     context = {'courses': courses}
     return render(request, 'homeworkapp/courses.html', context)
 
@@ -70,6 +74,9 @@ def edit_homework(request, homework_id):
     """Edit an existing homework"""
     homework = Homework.objects.get(id=homework_id)
     course = homework.course
+    #Make sure that the home work belongs to the current user
+    if homework.owner != request.user:
+        raise Http404
 
     if request.method != 'POST':
         #Initial request; pre-fill form with the current homework
