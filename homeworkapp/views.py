@@ -61,6 +61,7 @@ def new_homework(request, course_id):
         if form.is_valid():
             new_homework = form.save(commit=False)
             new_homework.course = course
+            new_homework.owner = request.user
             new_homework.save()
             return redirect('homeworkapp/new_homeworkapp.html', context)
 
