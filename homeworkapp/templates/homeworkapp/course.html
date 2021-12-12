@@ -1,34 +1,28 @@
 {% extends "homeworkapp/base.html" %}
 
+{% block page_header %}
+  <h3>{{ course }}</h3>
+{% endblock page_header %}
+
 {% block content %}
+  <p>
+      <a href="{% url 'homeworkapp:new_homework' course.id %}">Add new homework</a> 
+  </p>
 
-<p>homework</p>
-<p>Allows user to write the various homeworks they have and mark them as completed</p>
-
-# page 405
-<p>Course: {{ course }}</p>
-
-<p>homeworks:</p>
-
-<p>
-    <a href="{% url 'homeworkapp:new_homework' course.id %}">Add new homework</a> 
-</p>
-
-<ul>
-    {% for homework in homeworks %}
-    <li>
-        <p>{{ homework.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ homework.assignment|linebreaks }}</p>
-        <p>
-            <a href="{% url 'homeworkapp:edit_course' course.id %}">Edit course</a>
-        </p> 
-        <p>
-            <a href="{% url 'homeworkapp:edit_homework' homework.id %}">Edit homework</a>
-        </p> 
-    </li>
-    {% empty %}
-<li>There are no homeworks due for this course yet.</li>
-{% endfor %}
-</ul>
+  {% for homework in homeworks %}
+    <div class="card mb-3">
+      <h4 class="card-header">
+        {{ homework.date_added|date:'M d, Y H:i' }}
+        <small>
+          <a href="{% url 'homeworkapp:edit_homework' homework.id %}">
+            Edit homework</a></small>
+      </h4>
+      <div class="card-body">
+        {{ homework.assignment|linebreaks }}
+      </div>
+    </div>
+  {% empty %}
+    <p>There are no homeworks due for this course yet.</p>
+  {% endfor %}
 
 {% endblock content %}
