@@ -93,3 +93,23 @@ def edit_homework(request, homework_id):
     return render(request, 'homeworkapp/edit_homework.html', context)
 
       
+@login_required
+def edit_course(request, course_id):
+    """Edit an existing course"""
+    course = Course.objects.get(id=course_id)
+    #Make sure that the home work belongs to the current user
+    if course.owner != request.user:
+        raise Http404
+
+    if request.method != 'POST':
+        #Initial request; pre-fill form with the current homework
+        form = CourseForm(instance=course)
+    else:
+        #POST data submitted; process data
+        form = HomeworkForm(instance=course, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('homeworkapp:course', course_id=course.id)
+
+    context = {'homework': homework, 'course': course, 'form': form}
+    return render(request, 'homeworkapp/edit_course.html', context)
