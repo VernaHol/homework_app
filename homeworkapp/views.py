@@ -14,7 +14,7 @@ def index(request):
 
 def courses(request):
     """show all homeworks."""
-    courses = Course.objects.order_by('date_added')
+    courses = Course.objects.filter(owner=request.user).order_by('date_added')
     #Make sure that the homework belongs to the current user
     if courses.owner != request.user:
         raise Http404
