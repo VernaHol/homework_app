@@ -20,6 +20,9 @@
         <p>{{ homework.date_added|date:'M d, Y H:i' }}</p>
         <p>{{ homework.assignment|linebreaks }}</p>
         <p>
+            <a href="{% url 'homeworkapp:edit_course' course.id %}">Edit course</a>
+        </p> 
+        <p>
             <a href="{% url 'homeworkapp:edit_homework' homework.id %}">Edit homework</a>
         </p> 
     </li>
