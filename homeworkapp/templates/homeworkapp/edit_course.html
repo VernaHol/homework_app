@@ -7,9 +7,9 @@
 
 {% block content %}
 
-    <p>><a href="{% url 'homeworkapp:course' course.id %}">Back</a></p>
+    <p>><a href="{% url 'homeworkapp:courses' %}">Back</a></p>
 
-    <form method='post' action="{% url 'homeworkapp:edit_course' course.id %}" class="form">
+    <form method='post' action="{% url 'homeworkapp:edit_course' %}" class="form">
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons %}
