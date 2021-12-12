@@ -1,21 +1,20 @@
 {% extends "homeworkapp/base.html" %}
 
+{% block page_header %}
+  <h1>Courses</h1>
+{% endblock page_header %}
+
 {% block content %}
-
-<p>Courses</p>
-<p>Allows user to add their courses to the app</p>
-
-<p>Course</p>
-<ul>
+  <ul>
     {% for course in courses %}
-    <li>
+      <li><h3>
         <a href="{% url 'homeworkapp:course' course.id %}">{{ course }}</a>
-    </li>
+      </h3></li>
     {% empty %}
-    <li>No courses have been added yet.</li>
+      <li><h3>No courses have been added yet.</h3></li>
     {% endfor %}
-</ul>
+  </ul>
 
-<a href="{% url 'homeworkapp:new_course' %}">Add a new course</a>
+  <h3><a href="{% url 'homeworkapp:new_course' %}">Add a new course</a></h3>
 
 {% endblock content %}
