@@ -1,12 +1,23 @@
 {% extends "homeworkapp/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <h2>A new course.</h2>
+{% endblock page_header %}
 
 {% block content %}
-  <p>Add a new course:</p>
 
-  <form action="{% url 'homeworkapp:new_course' %}" method='post'></form>
-     {% csrf_token %}
-     {{ form.as_p }}
-     <button name="submit">Add course</button>
-  </form> 
+  <p><a href="{% url 'homeworkapp:courses' %}">Back</a></p>
 
-  {% endblock content %}
+  <form method="post" action="{% url 'homeworkapp:new_course' %}" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button name="submit" class="btn btn-primary">Add course</button>
+    {% endbuttons %}
+
+    <input type="hidden" name="next"
+      value="{% url 'homeworkapp:courses' %}" />
+  </form>
+
+{% endblock content %}
