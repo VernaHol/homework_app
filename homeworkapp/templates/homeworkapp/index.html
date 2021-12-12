@@ -1,10 +1,13 @@
 {% extends "homeworkapp/base.html" %}
 
-{% block content %}
+{% block page_header %}
+     <div class="jumbotron">
+          <h1 class="display-3">Track your homeworks.</h1>
 
-<p>Homework App</p>
-<p>Homeword App allows users to keep track of their homework and allows
-     them to share them as well as share the materials needed to do them.</p>
+          <p class="lead">Homework App allows users to keep track of their homeworks and allows
+               them to share them as well as share the materials needed to do them.</p>
 
-    
+          <a class="btn btn-lg btn-primary" href="{% url 'user:register' %}"
+               role="button">Register &raquo;</a>
+     </div>
 {% endblock content %}
