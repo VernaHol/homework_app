@@ -5,16 +5,25 @@
 {% endblock page_header %}
 
 {% block content %}
+
+  <p>
+    <a href="{% url 'homeworkapp:new_course' %}">Add a new course</a> 
+  </p>
+
   <ul>
     {% for course in courses %}
-      <li><h3>
-        <a href="{% url 'homeworkapp:course' course.id %}">{{ course }}</a>
-      </h3></li>
+      <li>
+        <h3>
+          <a href="{% url 'homeworkapp:course' course.id %}">{{ course }}</a>
+          <small>
+            <a href="{% url 'homeworkapp:edit_course' course.id %}">Edit course</a>
+          </small>
+        </h3>
+
+      </li>
     {% empty %}
       <li><h3>No courses have been added yet.</h3></li>
     {% endfor %}
   </ul>
-
-  <h3><a href="{% url 'homeworkapp:new_course' %}">Add a new course</a></h3>
 
 {% endblock content %}
