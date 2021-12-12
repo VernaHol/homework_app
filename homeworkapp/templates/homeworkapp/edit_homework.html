@@ -1,15 +1,22 @@
 {% extends "homeworkapp/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+  <h2>Edit homeowork.</h2>
+{% endblock page_header %}
 
 {% block content %}
 
-    <p>><a href="{% url 'homeworkapp:course' course.id %}">{{ course }}</a></p>
+    <p>><a href="{% url 'homeworkapp:course' course.id %}">Back</a></p>
 
-    <p> Edit homework</p>
-
-    <form action="{% url 'homeworkapp:edit_homework' homework.id %}" method='post'>
+    <form method='post' action="{% url 'homeworkapp:edit_homework' homework.id %}" class="form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <buttom name="submit">Save changes</buttom>
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">Save changes</button>
+        {% endbuttons %}
+
+        <input type="hidden" name="next"
+            value="{% url 'homeworkapp:course' course.id %}" />
     </form>
 
 {% endblock content %}
