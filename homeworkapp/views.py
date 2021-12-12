@@ -111,5 +111,5 @@ def edit_course(request, course_id):
             form.save()
             return redirect('homeworkapp:course', course_id=course.id)
 
-    context = {'homework': homework, 'course': course, 'form': form}
+    context = {'course': course, 'form': form}
     return render(request, 'homeworkapp/edit_course.html', context)
